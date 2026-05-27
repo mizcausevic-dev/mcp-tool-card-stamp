@@ -1,0 +1,30 @@
+{
+  "server_id": "kg-research-mcp",
+  "name": "search-vectorstore",
+  "version": "1.0.0",
+  "mcp_server_uri": "https://research.kineticgain.com/mcp",
+  "description": "Searches the procurement-doc vector store and returns top-K hits with page-level citations.",
+  "input_schema_inline": {
+    "type": "object",
+    "required": ["query"],
+    "additionalProperties": false,
+    "properties": {
+      "query": { "type": "string", "minLength": 1 },
+      "top_k": { "type": "integer", "minimum": 1, "maximum": 50, "default": 10 }
+    }
+  },
+  "side_effect_class": "read",
+  "reversible": true,
+  "rate_limited": true,
+  "pii_exposure": "low",
+  "secrets_exposure": "none",
+  "performance": {
+    "p50_latency_ms": 90,
+    "p95_latency_ms": 400,
+    "measurement_window": "last_30d"
+  },
+  "cost": {
+    "per_call_usd": 0.0001,
+    "measurement_window": "last_30d"
+  }
+}

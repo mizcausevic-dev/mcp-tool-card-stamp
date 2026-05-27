@@ -1,0 +1,31 @@
+{
+  "server_id": "kg-admin-mcp",
+  "name": "tenant-reset",
+  "version": "0.3.0",
+  "mcp_server_uri": "https://admin.kineticgain.com/mcp",
+  "description": "Resets a tenant to its initial-onboarding state. Drops user data, revokes all keys. Irreversible after 72 hours.",
+  "input_schema_inline": {
+    "type": "object",
+    "required": ["tenant_id", "reason", "approver_ticket"],
+    "additionalProperties": false,
+    "properties": {
+      "tenant_id": { "type": "string", "pattern": "^tnt_[A-Za-z0-9]+$" },
+      "reason": { "type": "string", "minLength": 10 },
+      "approver_ticket": { "type": "string", "pattern": "^OPS-\\d+$" }
+    }
+  },
+  "side_effect_class": "destructive",
+  "external_systems": ["primary-postgres", "object-storage", "kms"],
+  "reversible": false,
+  "rate_limited": true,
+  "pii_exposure": "high",
+  "secrets_exposure": "writes_secret_material",
+  "human_approval_required": true,
+  "refusal_modes": ["no_approver_ticket", "approver_ticket_unverified"],
+  "audit": {
+    "log_uri": "https://audit.kineticgain.com/mcp/tenant-reset",
+    "retention_days": 2555,
+    "signed_by": "kg-admin-mcp",
+    "incident_response_uri": "https://kineticgain.com/security/report"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "name": "mcp-tool-card-stamp",
+  "version": "0.1.0",
+  "description": "Build and validate a minimal MCP Tool Card per mcp-tool-card-spec v0.1 from a StampOptions struct. Enforces id / version regex, enum constraints (side_effect_class, pii_exposure, secrets_exposure), and the spec's allOf clause (destructive → human_approval_required:true) with a clear error. Completes the stamp quartet alongside agent-card-stamp, prompt-provenance-stamp, and evidence-bundle-builder.",
+  "type": "module",
+  "license": "AGPL-3.0-or-later",
+  "author": "mizcausevic-dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mizcausevic-dev/mcp-tool-card-stamp"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "tool-card",
+    "stamp",
+    "scaffolding",
+    "validation",
+    "ai-governance",
+    "kinetic-gain-suite",
+    "typescript"
+  ],
+  "bin": {
+    "mcp-tool-card-stamp": "dist/cli.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage",
+    "demo": "tsx src/cli.ts fixtures/search-vectorstore.json",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/node": "^22.10.0",
+    "@vitest/coverage-v8": "^2.1.8",
+    "eslint": "^9.17.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.0",
+    "vitest": "^2.1.8"
+  }
+}
