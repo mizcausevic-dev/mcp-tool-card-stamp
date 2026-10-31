@@ -68,8 +68,9 @@ const card = stamp(opts);
 
 - [**`mcp-tool-card-spec`**](https://github.com/mizcausevic-dev/mcp-tool-card-spec) — the schema this enforces.
 - [**`mcp-tool-card-diff`**](https://github.com/mizcausevic-dev/mcp-tool-card-diff) — diff two stamped cards across versions.
-- [**`mcp-tool-card-summary`**](https://github.com/mizcausevic-dev/mcp-tool-card-summary) — surface badges from a stamped card.
 - [**`agent-card-stamp`**](https://github.com/mizcausevic-dev/agent-card-stamp), [**`prompt-provenance-stamp`**](https://github.com/mizcausevic-dev/prompt-provenance-stamp), [**`evidence-bundle-builder`**](https://github.com/mizcausevic-dev/evidence-bundle-builder) — siblings across the suite.
+
+Historical reference: [**`mcp-tool-card-summary`**](https://github.com/mizcausevic-dev/mcp-tool-card-summary) surfaced badges from a stamped card. GitHub marked it archived and read-only when checked on 2026-10-30; its source remains available.
 
 ## License
 
